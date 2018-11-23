@@ -1,4 +1,10 @@
 # blog
 >blog
-This is just a backup for my blogs.
-Thanks for you time.
+>>随便写点，海星。(~~其实只是懒得码字～(￣▽￣～)(～￣▽￣)～~~)
+>>> `(￣▽￣)～■干杯□～(￣▽￣)`
+
+~~有本事就来打我啊？！！~~
+>~~你打得着吗？ʅ（´◔౪◔）ʃ~~
+----------
+>Contact me by  [Telegram](https://t.me/callmehelp).
+>>o((⊙﹏⊙))o.

@@ -5,7 +5,7 @@
 **Contents**
 ----
 * [***Shell脚本***](#shell脚本)
-  * [quick_set.sh](#quick-setsh)
+  * [quick-set.sh](#quick-setsh)
   * [AutoFormat.sh](#AutoFormatsh)
 ----
 ### quick-set.sh

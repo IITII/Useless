@@ -51,5 +51,6 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/ZB
 
 # gotop
 git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
-/tmp/gotop/scripts/download.sh
+. /tmp/gotop/scripts/download.sh
+mv ./gotop /usr/local/bin
 

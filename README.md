@@ -10,7 +10,9 @@
   
   * [AutoFormat.sh](#AutoFormatsh)
   
-  * []
+  * [clean.sh](#cleansh)
+
+  * [update-ssr.sh](#update-ssrsh)
   
 * [***配置文件***](#配置文件)
 
@@ -24,12 +26,29 @@
   ```bash
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/quick-set.sh && chmod +x quick-set.sh && bash quick-set.sh
   ```
+
 ### AutoFormat.sh
 > Aria2自动转码脚本（开发ing）
 * 食用方法：
   ```bash
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/AutoFormat.sh && chmod +x AutoFormat.sh && bash AutoFormat.sh
   ```
+
+### clean.sh
+> 简单释放一下系统空间
+* 食用方法：
+  ```bash
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/clean.sh && chmod +x clean.sh && bash clean.sh
+  ```
+
+### update-ssr.sh
+> 自动检测并更新electron-ssr版本
+* 食用方法：
+  ```bash
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/update-ssr.sh && chmod +x update-ssr.sh && bash update-ssr.sh
+  ```
+
+### 
 ----
 ## 配置文件
 ----

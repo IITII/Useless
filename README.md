@@ -21,7 +21,7 @@
 ## shell脚本
 ----
 ### quick-set.sh
-> 为了我在删库后快速重建环境
+> 为了我在删库后快速重建环境, 默认注释掉了一些配置文件，可根据需要启用
 * 食用方法：
   ```bash
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/quick-set.sh && chmod +x quick-set.sh && bash quick-set.sh

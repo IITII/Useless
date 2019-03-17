@@ -74,9 +74,9 @@
 > V2ray简单配置文件，内置ss + mtproxy
 * 食用方法：
   ```bash
-  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/v2ray-config.json
   #请提前将配置文件做好备份
   #防火墙需开放 55555（for ss）和 55557（for mtproxy）
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/v2ray-config.json
   mv ./v2ray-config.json /etc/v2ray/config.json
   systemctl restart v2ray && systemctl status v2ray
   ```

@@ -15,6 +15,8 @@
   * [update-ssr.sh](#update-ssrsh)
   
   * [Format.sh](#Formatsh)
+
+  * [FFmpeg.sh](#FFmpegsh)
   
 * [***配置文件***](#配置文件)
 
@@ -64,6 +66,53 @@
     wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/Format.sh
     echo "on-download-complete=bash ~/Format.sh" >> ~/.aria2/aria2.conf
     echo "#force-save=true" >> ~/.aria2/aria2.conf
+  ```
+### FFmpeg.sh
+> 一个基于FFmpeg可以进行媒体文件转码的简易工具  
+> 支持命令行选项  
+* 获取方法：
+  ```bash
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/ffmpeg.sh
+  ```
+* 食用方法：
+  ```bash
+  $ ./ffmpeg.sh -h
+  -h: To show this menu
+  -e: Show Some Useful Templates
+  -m [1-9]: To switch mode
+                -m 1: 获取aac音频文件
+                -m 2: 获取mp3文件
+                -m 3: 获取H.264视频流文件(.mp4文件)
+                -m 4: 整合mp4文件和mp4文件
+                -m 5: .整合mp4和mp3文件
+                -m 6: 整合mp4和aac文件
+                -m 7: 添加srt字幕
+                -m 8: srt字幕转ass
+                -m 9: 添加ass字幕
+  $ ./ffmpeg.sh -e
+  ./ffmpeg.sh -m 1 input.mp4 output.aac
+  ./ffmpeg.sh -m 2 input.mp4 output.mp3
+  ./ffmpeg.sh -m 3 input.mp4 output.mp4
+  ./ffmpeg.sh -m 4 input_audio.mp4 input_video.mp4 output.mp4
+  ./ffmpeg.sh -m 5 input.mp3 input.mp4 output.mp4
+  ./ffmpeg.sh -m 6 input.aac input.mp4 output.mp4
+  ./ffmpeg.sh -m 7 input.mp4 input.srt output.mp4
+  ./ffmpeg.sh -m 8 input.srt output.ass
+  ./ffmpeg.sh -m 9 input.mp4 input.ass output.mp4
+  $ ./ffmpeg.sh
+  请选择你要选择的操作的序号：
+
+  * 所有文件名请完整输入文件名称，包括后缀名！
+
+  1.获取aac音频文件
+  2.获取mp3文件
+  3.获取H.264视频流文件(.mp4文件)
+  4.整合mp4文件和mp4文件
+  5.整合mp4和mp3文件
+  6.整合mp4和aac文件
+  7.添加srt字幕
+  8.srt字幕转ass
+  9.添加ass字幕
   ```
 
 ### 

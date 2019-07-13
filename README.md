@@ -23,6 +23,7 @@
   * [V2ray配置文件](#V2ray-configconf)
   
   * [Aria2配置文件](#aria2conf)
+* [others](./doubi/README.md)
 ----
 ## shell脚本
 ----

@@ -1,6 +1,6 @@
-# Nothing
->Nothing
->>> `(￣▽￣)～■干杯□～(￣▽￣)`
+# Some  Script
+> This repo is create for storing some useful script  
+>> `(￣▽￣)～■干杯□～(￣▽￣)`
 ----
 **Contents**
 ----
@@ -17,6 +17,8 @@
   * [Format.sh](#Formatsh)
 
   * [FFmpeg.sh](#FFmpegsh)
+  * [psi4_Simple.sh](#psi4Simplesh)
+  * [Ssh-Login-Notify]()
   
 * [***配置文件***](#配置文件)
 
@@ -114,6 +116,36 @@
   7.添加srt字幕
   8.srt字幕转ass
   9.添加ass字幕
+  ```
+### psi4_Simple.sh
+> 一个简单安装 `psi4` 的脚本
+
+```
+wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/psi4_Simple.sh && chmod +x psi4_Simple.sh
+```
+
+### ssh_login_notify.sh
+> 基于 **slack api** 的一个 **ssh** 登录通知服务  
+* 使用：  
+
+  ```bash 
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/ssh_login_notify.sh && chmod +x ssh_login_notify.sh
+  ```
+* 说明：
+
+  ```
+  root# ./ssh_login_notify.sh -h
+  Usage: ./ssh_login_notify.sh -u URL
+  使用本脚本来创建一个基于 slack app 的 ssh 登录通知服务
+  -h: get help. Show This message
+  -e: Show some examples
+  -u: Add webhooks
+
+  root# ./ssh_login_notify.sh -e
+  Some examples:
+  ./ssh_login_notify.sh -h
+  ./ssh_login_notify.sh -e
+  ./ssh_login_notify.sh -u https://api.google.com
   ```
 
 ### 

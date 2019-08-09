@@ -18,7 +18,10 @@
 
   * [FFmpeg.sh](#FFmpegsh)
   * [psi4_Simple.sh](#psi4Simplesh)
-  * [Ssh-Login-Notify]()
+  * [Ssh-Login-Notify](#sshloginnotifysh)
+  * [info.sh](#infosh)
+  * [quickInfo.sh](#quickinfosh)
+  * [sysInfo_notify.sh](#sysinfonotifysh)
   
 * [***配置文件***](#配置文件)
 
@@ -126,6 +129,7 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/m
 
 ### ssh_login_notify.sh
 > 基于 **slack api** 的一个 **ssh** 登录通知服务  
+- 先决条件: 已创建 ***slack app*** 并且开启了 WebHook
 * 使用：  
 
   ```bash 
@@ -148,7 +152,65 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/m
   ./ssh_login_notify.sh -u https://api.google.com
   ```
 
-### 
+### info.sh
+* 使用：  
+
+  ```bash 
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/info.sh && chmod +x info.sh
+  ```
+> 打印一些系统信息，如：  
+
+```
+当前时间            :Fri Aug  9 19:48:56 CST 2019
+当前 IP：**.**.**.**  来自于：中国 ** **  **
+上行流量             : 4.3MB
+下行流量             : 6.5MB
+当前开放的服务端口: Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      998/systemd-resolve
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1195/sshd
+tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      35145/master
+tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      1389/smbd
+tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      1389/smbd
+tcp6       0      0 :::22                   :::*                    LISTEN      1195/sshd
+tcp6       0      0 :::25                   :::*                    LISTEN      35145/master
+tcp6       0      0 :::1433                 :::*                    LISTEN      7328/docker-proxy
+tcp6       0      0 :::445                  :::*                    LISTEN      1389/smbd
+tcp6       0      0 :::139                  :::*                    LISTEN      1389/smbd
+当前用户的计划任务:
+
+总硬盘大小           : 12.1 GB (5.8 GB Used)
+服务器型号           : VMware Virtual Platform
+CPU 型号             : Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz
+CPU 核心数           : 2
+CPU 频率             : 2495.999 MHz
+总内存大小           : 1970 MB (1255 MB Used)
+SWAP大小             : 0 MB (0 MB Used)
+开机时长             : 1 days, 13 hour 50 min
+系统负载             : 0.07, 0.05, 0.01
+系统                 : Ubuntu 18.04.3 LTS
+架构                 : x86_64 (64 Bit)
+内核                 : 4.15.0-55-generic
+虚拟化平台           : vmware
+```
+
+### quickInfo.sh
+> 同上，但是没有字体颜色  
+
+* 使用：  
+
+  ```bash 
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/quickInfo.sh && chmod +x quickInfo.sh
+  ```
+
+### sysInfo_notify.sh
+> 工作原理和实现方式和 [ssh_login_notify.sh](#sshloginnotifysh) 一样  
+
+* 使用：  
+
+  ```bash 
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/sysInfo_notify.sh && chmod +x sysInfo_notify.sh
+  ```
 ----
 ## 配置文件
 ----

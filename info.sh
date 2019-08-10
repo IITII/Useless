@@ -230,20 +230,24 @@ systemTest_EN() {
     wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/ZBench/master/ZBench.sh && bash ZBench.sh
 }
 help() {
-    echo "-h: To show this menu"
-    echo "-s: Some simple infomation of server"
-    echo "-n: Detail for server"
-    echo "-nc: Detail for server & Add color"
-    echo "-f: Full information of server"
-    echo "-fc: Full information of server & Add color"
-    echo "-t [e:z]: Run Test For Server"
-    echo "          -t e: Run Test & Set Language = English"
-    echo "          -t z: Run Test & Set Language = Simple Chinese(Default)"
+    echo "Usage:"
+    echo "      -h: To show this menu"
+    echo "      -s: Some simple infomation of server"
+    echo "      -n [n:c]: Detail for server"
+    echo "              -n n: Detail for server"
+    echo "              -n c: Detail for server & Add color"
+    echo "      -f [n:c]: Full information of server"
+    echo "              -f n: Full information of server"
+    echo "              -f c: Full information of server & Add color"
+    echo "      -t [e:z]: Run Test For Server"
+    echo "              -t e: Run Test & Set Language = English"
+    echo "              -t z: Run Test & Set Language = Simple Chinese"
 }
 if [ ! -n "$1" ]; then
     help
 fi
-while getopts "m:he" arg; do #选项后面的冒号表示该选项需要参数
+# -n -f -t 后面必须要有参数，而-h -s后面不用
+while getopts "n:f:t:hs" arg; do #选项后面的冒号表示该选项需要参数
     case $arg in
     h)
         help

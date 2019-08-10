@@ -158,6 +158,23 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/m
   ```bash 
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/info.sh && chmod +x info.sh
   ```
+> ***Help***
+```
+root@server1804$: ./info.sh -h
+Usage:
+      -h: To show this menu
+      -s: Some simple infomation of server
+      -n [n:c]: Detail for server
+              -n n: Detail for server
+              -n c: Detail for server & Add color
+      -f [n:c]: Full information of server
+              -f n: Full information of server
+              -f c: Full information of server & Add color
+      -t [e:z]: Run Test For Server
+              -t e: Run Test & Set Language = English
+              -t z: Run Test & Set Language = Simple Chinese
+```
+
 > 打印一些系统信息，如：  
 
 ```
@@ -193,15 +210,6 @@ SWAP大小             : 0 MB (0 MB Used)
 内核                 : 4.15.0-55-generic
 虚拟化平台           : vmware
 ```
-
-### quickInfo.sh
-> 同上，但是没有字体颜色  
-
-* 使用：  
-
-  ```bash 
-  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/quickInfo.sh && chmod +x quickInfo.sh
-  ```
 
 ### sysInfo_notify.sh
 > 工作原理和实现方式和 [ssh_login_notify.sh](#sshloginnotifysh) 一样  

@@ -40,14 +40,9 @@ bash <(curl -L -s https://install.direct/go.sh)
     #uninstall 
     #source <(curl -sL https://git.io/fNgqx) --remove
 
-# Zench
-# Chinese Version
-wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/ZBench/master/ZBench-CN.sh
-#wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/ZBench/master/ZBench-CN.sh && bash ZBench-CN.sh
-
-# English Version
-#wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/ZBench/master/ZBench.sh 
-#wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/ZBench/master/ZBench.sh && bash ZBench.sh
+# SystemInfo
+wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/info.sh && chmod +x info.sh
+#wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/info.sh && chmod +x info.sh && bash info.sh
 
 # gotop
 git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop

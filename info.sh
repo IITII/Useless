@@ -44,7 +44,7 @@ rm -rf /tmp/report && mkdir /tmp/report
 
 # Install Virt-what
 if [ ! -e '/usr/sbin/virt-what' ]; then
-#    echo "Installing Virt-What......"
+    #    echo "Installing Virt-What......"
     if [ "${release}" == "centos" ]; then
         yum -y install virt-what >/dev/null 2>&1
     else
@@ -113,21 +113,21 @@ disk_total_size=$(calc_disk ${disk_size1[@]})
 disk_used_size=$(calc_disk ${disk_size2[@]})
 #RX_eth=`ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $1 " " $(NF-1) $NF " "}' | sed 's/RX/下行流量(RX)/g' |  sed 's/TX/上行流量(TX)/g'`
 #TX_eth=`ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $1 " " $(NF-1) $NF " "}' | sed 's/RX/下行流量(RX)/g' |  sed 's/TX/上行流量(TX)/g'`
-RX_eth=`ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/RX/下行流量(RX)/g'`
-TX_eth=`ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/TX/上行流量(TX)/g'`
+RX_eth=$(ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/RX/下行流量(RX)/g')
+TX_eth=$(ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/TX/上行流量(TX)/g')
 #服务器型号
-server_type=`dmidecode -s system-product-name`
+server_type=$(dmidecode -s system-product-name)
 #内存插条数，已使用插槽数，及每条内存大小
 #mem_detail=`dmidecode|grep -P -A5 "Memory\s+Device" | grep Size |grep -v Range | cat -n`
 #内存的频率
 #mem_speed=`dmidecode|grep -A16 "Memory Device"|grep 'Speed' | cat -n`
-crontab_l=`crontab -l`
+crontab_l=$(crontab -l)
 #clear
-echo -e "当前时间            :`date`"
+echo -e "当前时间            :$(date)"
 curl myip.ipip.net
 echo -e "上行流量             : ${SKYBLUE}$TX_eth${PLAIN}"
 echo -e "下行流量             : ${SKYBLUE}$RX_eth${PLAIN}"
-echo -e "当前开放的服务端口: ${SKYBLUE}`netstat -ntlp`${PLAIN}"
+echo -e "当前开放的服务端口: ${SKYBLUE}$(netstat -ntlp)${PLAIN}"
 echo -e "当前用户的计划任务:\n${SKYBLUE}$crontab_l${PLAIN}"
 echo -e "总硬盘大小           : ${SKYBLUE}$disk_total_size GB ($disk_used_size GB Used)${PLAIN}"
 echo -e "服务器型号           : ${SKYBLUE}$server_type${PLAIN}"

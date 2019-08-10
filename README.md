@@ -20,7 +20,6 @@
   * [psi4_Simple.sh](#psi4Simplesh)
   * [Ssh-Login-Notify](#sshloginnotifysh)
   * [info.sh](#infosh)
-  * [quickInfo.sh](#quickinfosh)
   * [sysInfo_notify.sh](#sysinfonotifysh)
   
 * [***配置文件***](#配置文件)

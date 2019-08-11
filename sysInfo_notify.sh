@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# 0 2 * * * bash /etc/slack/systemInfo.sh
 # simple system notify shell srcipt.
 #git clone https://github.com/GoogleCloudPlatform/slack-samples.git
 #cd slack-samples/notify

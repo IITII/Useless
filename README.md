@@ -21,6 +21,7 @@
   * [Ssh-Login-Notify](#sshloginnotifysh)
   * [info.sh](#infosh)
   * [sysInfo_notify.sh](#sysinfonotifysh)
+  * [diamond.sh]()
   
 * [***配置文件***](#配置文件)
 
@@ -218,6 +219,30 @@ SWAP大小             : 0 MB (0 MB Used)
   ```bash 
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/sysInfo_notify.sh && chmod +x sysInfo_notify.sh
   ```
+
+### diamond.sh
+> 打印一个菱形
+
+* 使用：  
+
+  ```bash 
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/diamond.sh && chmod +x diamond.sh
+  ```
+
+* 效果：
+
+```
+root@server1804:~/dev# ./diamond.sh
+    *
+   ***
+  *****
+ *******
+  *****
+   ***
+    *
+root@server1804:~/dev#
+```
+
 ----
 ## 配置文件
 ----

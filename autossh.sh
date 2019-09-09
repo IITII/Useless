@@ -10,7 +10,7 @@
 #=================================================
 # curl https://raw.githubusercontent.com/IITII/Useless/master/autossh.sh | bash
 mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bk
-mv /root/authorized_keys /root/authorized_keys.bk
+mv /root/.ssh/authorized_keys /root/.ssh/authorized_keys.bk
 wget -O /etc/ssh/sshd_config https://raw.githubusercontent.com/IITII/Useless/master/ssh/sshd_config
-wget -O /root/authorized_keys https://raw.githubusercontent.com/IITII/Useless/master/ssh/authorized_keys
+wget -O /root/.ssh/authorized_keys https://raw.githubusercontent.com/IITII/Useless/master/ssh/authorized_keys
 service ssh restart && service sshd restart

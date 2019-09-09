@@ -21,7 +21,8 @@
   * [Ssh-Login-Notify](#sshloginnotifysh)
   * [info.sh](#infosh)
   * [sysInfo_notify.sh](#sysinfonotifysh)
-  * [diamond.sh]()
+  * [diamond.sh](#diamondsh)
+  * [autossh.sh]()
   
 * [***配置文件***](#配置文件)
 
@@ -242,6 +243,15 @@ root@server1804:~/dev# ./diamond.sh
     *
 root@server1804:~/dev#
 ```
+
+### autossh.sh
+> A simple shell script to update ssh config
+
+* 使用：  
+
+  ```bash 
+  wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/autossh.sh && chmod +x autossh.sh
+  ```
 
 ----
 ## 配置文件

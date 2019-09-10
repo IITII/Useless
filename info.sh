@@ -111,10 +111,10 @@ disk_size1=($(LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|
 disk_size2=($(LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem' | awk '{print $3}'))
 disk_total_size=$(calc_disk ${disk_size1[@]})
 disk_used_size=$(calc_disk ${disk_size2[@]})
-#RX_eth=`ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $1 " " $(NF-1) $NF " "}' | sed 's/RX/下行流量(RX)/g' |  sed 's/TX/上行流量(TX)/g'`
-#TX_eth=`ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $1 " " $(NF-1) $NF " "}' | sed 's/RX/下行流量(RX)/g' |  sed 's/TX/上行流量(TX)/g'`
-RX_eth=$(ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/RX/下行流量(RX)/g')
-TX_eth=$(ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/TX/上行流量(TX)/g')
+#RX_eth=`/sbin/ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $1 " " $(NF-1) $NF " "}' | sed 's/RX/下行流量(RX)/g' |  sed 's/TX/上行流量(TX)/g'`
+#TX_eth=`/sbin/ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $1 " " $(NF-1) $NF " "}' | sed 's/RX/下行流量(RX)/g' |  sed 's/TX/上行流量(TX)/g'`
+RX_eth=$(/sbin/ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/RX/下行流量(RX)/g')
+TX_eth=$(/sbin/ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/TX/上行流量(TX)/g')
 simple_info() {
     crontab_l=$(crontab -l)
     #clear

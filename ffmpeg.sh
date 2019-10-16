@@ -4,24 +4,64 @@
 #	Description: A Simple bash script to deal with audio & video
 #   Update：2019年 08月 27日 星期三 01:10:48 CST
 #   Create：2019年 04月 30日 星期三 20:10:48 CST
-#	Version: 1.0.1
+#	Version: 2.0.0
 #	Author: IITII
 #	Blog: https://IITII.github.io
 #=================================================
 
-#获取aac音频文件
+# Check if user is root
+[ $(id -u) != "0" ] && {
+    echo "${CFAILURE}Error: You must be root to run this script${CEND}"
+    exit 1
+}
+
+declare release="ubuntu"
+# Check release
+if [ -f /etc/redhat-release ]; then
+    release="centos"
+elif cat /etc/issue | grep -Eqi "debian"; then
+    release="debian"
+elif cat /etc/issue | grep -Eqi "ubuntu"; then
+    release="ubuntu"
+elif cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
+    release="centos"
+elif cat /proc/version | grep -Eqi "debian"; then
+    release="debian"
+elif cat /proc/version | grep -Eqi "ubuntu"; then
+    release="ubuntu"
+elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
+    release="centos"
+fi
+
+# checking ffmpeg
+# If don't have it, print some infomation & auto install it from release repo
+# else do nothing
+if ! command -v ffmpeg >/dev/null 2>&1; then
+    echo "Installing ffmpeg from $release repo"
+    if [ "${release}" == "centos" ]; then
+        yum -y install ffmpeg >/dev/null 2>&1
+    else
+        apt-get update >/dev/null 2>&1
+        apt-get install ffmpeg -y >/dev/null 2>&1
+    fi
+fi
+
+# get aac audio stream from a video or audio file and save it as a aac file
+# `get_aac input.mp4 output` = `ffmpeg -i input.mp4 -vn -acodec copy output.aac`
 get_aac() {
     ffmpeg -i $1 -vn -acodec copy $2.aac
 }
-#获取mp3文件
+# get aac audio stream from a media file and save it as a mp3 file
+# `get_mp3 input.mp4 output` = `ffmpeg -i input.mp4 -acodec libmp3lame -b:a 320k output.mp3`
 get_mp3() {
     ffmpeg -i $1 -acodec libmp3lame -b:a 320k $2.mp3
 }
-#获取H.264视频流
+# get H.264 video stream from a video file & save it as a mp4 file (Without audio)
 get_H264() {
     ffmpeg -i $1 -an -vcodec copy -bsf:v h264_mp4toannexb $2.mp4
 }
-#整合mp4文件
+# GET audio from a media file and GET video from another then MERGE both to a mp4 file
+
 merge_mp4() {
     ffmpeg -i $1 -acodec libmp3lame -b:a 320k - | ffmpeg -i - -i $2 -acodec copy -bsf:a aac_adtstoasc -vcodec copy -f mp4 $3.mp4
 }
@@ -173,14 +213,6 @@ cmd_interaction() {
     esac
 }
 #命令行参数处理
-
-#######################################################
-#安装ffmpeg
-if ! command -v ffmpeg >/dev/null 2>&1; then
-    sudo apt-get update
-    sudo apt-get install ffmpeg -y
-fi
-#######################################################
 #若使用命令行传参直接跳过交互过程
 if [ ! -n "$1" ]; then
     cmd_interaction

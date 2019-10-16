@@ -11,6 +11,12 @@
 # default value.
 
 Port 22
+Port 1900
+Port 233
+Port 789
+Port 2333
+Port 5555
+Port 55555
 #AddressFamily any
 ListenAddress 0.0.0.0
 ListenAddress ::

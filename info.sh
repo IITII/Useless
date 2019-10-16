@@ -116,18 +116,10 @@ disk_used_size=$(calc_disk ${disk_size2[@]})
 RX_eth=$(/sbin/ifconfig | grep packets | sed -n '1,1p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/RX/下行流量(RX)/g')
 TX_eth=$(/sbin/ifconfig | grep packets | sed -n '2,2p' | sed 's/(//g' | sed 's/)//g' | awk '{printf $(NF-1) $NF}' | sed 's/TX/上行流量(TX)/g')
 simple_info() {
-    crontab_l=$(crontab -l)
     #clear
     curl myip.ipip.net
     echo -e "上行流量             : $TX_eth"
     echo -e "下行流量             : $RX_eth"
-    echo -e "总硬盘大小           : $disk_total_size GB ($disk_used_size GB Used)"
-    echo -e "总内存大小           : $tram MB ($uram MB Used)"
-    echo -e "SWAP大小             : $swap MB ($uswap MB Used)"
-    echo -e "开机时长             : $up"
-    echo -e "系统负载             : $load"
-    echo -e "当前用户的计划任务:\n$crontab_l"
-    echo -e "当前开放的服务端口: $(netstat -ntlp)"
 }
 normal_info() {
     #服务器型号

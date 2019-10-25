@@ -43,16 +43,20 @@ fi
 # check rsync command
 # If don't have it, print some infomation & auto install it from release repo
 # else do nothing
-if ! command -v $RSYNC >/dev/null 2>&1; then
-    echo "Installing $RSYNC from $release repo"
-    if [ "${release}" == "centos" ]; then
-        sudo yum update
-        sudo yum -y install $RSYNC >/dev/null 2>&1
-    else
-        sudo apt-get update >/dev/null 2>&1
-        sudo apt-get install $RSYNC -y >/dev/null 2>&1
+# $1: command which need to be checked
+# $2: linux distribute
+check_command() {
+    if ! command -v $1 >/dev/null 2>&1; then
+        echo "Installing $1 from $release repo"
+        if [ "$2" == "centos" ]; then
+            sudo yum update
+            sudo yum -y install $1 >/dev/null 2>&1
+        else
+            sudo apt-get update >/dev/null 2>&1
+            sudo apt-get install $1 -y >/dev/null 2>&1
+        fi
     fi
-fi
+}
 
 # sync mirror data
 # $1 for data URL
@@ -63,18 +67,24 @@ sync_data() {
 
 # check path is exist
 # if not, create it
+check_path() {
+    echo "Checking Path $1"
+    if ! [ -d $1 ]; then
+        echo "Create Unexist Path $1"
+        mkdir -p $1
+    else
+        echo "Existed !"
+    fi
+}
 
-if ! [ -d $SAVE_DIR ]; then
-    mkdir -p $SAVE_DIR
-fi
-if ! [ -d $SAVE_DIR$SAVE_Targets ]; then
-    mkdir -p $SAVE_DIR$SAVE_Targets
-fi
-if ! [ -d $SAVE_DIR$SAVE_Packages ]; then
-    mkdir -p $SAVE_DIR$SAVE_Packages
-fi
+echo "Checking ENV..."
 
-echo "Rsyncing"
+check_command $RSYNC $release
+check_path $SAVE_DIR
+check_path $SAVE_DIR$SAVE_Targets
+check_path $SAVE_DIR$SAVE_Packages
+
+echo "Rsyncing..."
 # sync
 
 # Targerts
@@ -82,3 +92,5 @@ sync_data $RSYNC_Targets $SAVE_DIR$SAVE_Targets
 
 # Packages
 sync_data $RSYNC_Packages $SAVE_DIR$SAVE_Packages
+
+echo "Rsync Finish!"

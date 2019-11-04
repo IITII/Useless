@@ -1,50 +1,38 @@
-upstream node {
-    server mail.iitii.me:443;
+upstream iitii {
+    server openwrt.iitii.me:443;
 }
 server {
-    listen 443 ssl;
-    server_name dl.iitii.me;
-    #server_name 17204117.stu.nchu.edu.cn;
-
-
-    #set $my_server_name $scheme://$server_name;
-
-    #if ( $my_server_name != https://$server_name ) {
-    #   rewrite ^ https://$server_name$request_uri? permanent;
-    #}
-    ssl_certificate  /etc/nginx/ssl/dl.iitii.me/dl.pem;
-    ssl_certificate_key /etc/nginx/ssl/dl.iitii.me/dl.key;
+    listen 80;  
+    rewrite ^(.*) https://$host$1 permanent;
+}
+server {
+    listen 443 ssl default_server;
+    server_name china.iitii.me;
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/china.iitii.me/pem.pem;
+    ssl_certificate_key /etc/nginx/ssl/china.iitii.me/key.key;
     ssl_session_timeout 5m;
     ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-
-    error_log    /var/log/nginx/ReverseProxy_error.log    error;
-    access_log    /var/log/nginx/ReverseProxy_accss.log;
-
-    location / {
+    #error_log    /var/log/nginx/RemoteDl_error.log    error;
+    #access_log    /var/log/nginx/RemoteDl_accss.log;
+    location /china {
+        proxy_redirect off;
+        proxy_pass https://iitii;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host  $http_host;
-        proxy_set_header X-Nginx-Proxy true;
-        proxy_http_version 1.1;
-        proxy_set_header Connection "";
-
-        # 配置upstream节点
-        proxy_pass    https://node;
     }
-
-   # error_page 404 /404.html;
-   #     location =  /xxx/xxx/40x.html {
-   # }
-
-  #  error_page 500 502 503 504 /50x.html;
-  #      location =  /xxx/xxx/50x.html {
- #   }
-
-}
-server {
-    listen 80;
-    server_name dl.iitii.me;
-    rewrite ^(.*)$ https://$host$1 permanent;
+    location / {
+        proxy_pass https://iitii;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real_IP $remote_addr;
+        proxy_set_header User-Agent $http_user_agent;
+        proxy_set_header Accept-Encoding ''; 
+        proxy_buffering off;
+    }
 }

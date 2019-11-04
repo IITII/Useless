@@ -1,5 +1,5 @@
 server {
-    listen 443 ssl;
+    listen 443 ssl default_server;
     ssl on;
     ssl_certificate       /etc/nginx/v2ray.crt;
     ssl_certificate_key   /etc/v2ray/v2ray.key;

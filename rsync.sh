@@ -94,3 +94,8 @@ sync_data $RSYNC_Targets $SAVE_DIR$SAVE_Targets
 sync_data $RSYNC_Packages $SAVE_DIR$SAVE_Packages
 
 echo "Rsync Finish!"
+
+echo "Fixing soft link..."
+
+# Fix soft link
+cd $SAVE_DIR$SAVE_Targets && cd ../../ && ln -s && ln -s ../packages-18.06/ packages

@@ -98,4 +98,4 @@ echo "Rsync Finish!"
 echo "Fixing soft link..."
 
 # Fix soft link
-cd $SAVE_DIR$SAVE_Targets && cd ../../ && ln -s && ln -s ../packages-18.06/ packages
+cd $SAVE_DIR$SAVE_Targets && cd ../../ && ln -s && ln -s ../`ls ../ | grep packages` packages

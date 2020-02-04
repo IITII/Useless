@@ -42,7 +42,7 @@ if [ ! -n "$1" ]; then
     cmd_intface
     common
 fi
-while getopts "m:he" arg; do
+while getopts "u:he" arg; do
     case $arg in
     u)
         shift

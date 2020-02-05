@@ -6,11 +6,30 @@
         }
     },
     "log": {
-        "access": "",
-        "error": "",
+        "access": "/var/log/v2ray/access.log",
+        "error": "/var/log/v2ray/error.log",
         "loglevel": "warning"
     },
     "inbounds": [
+        {
+            "tag": "ssPorxy",
+            "listen": "0.0.0.0",
+            "protocol": "shadowsocks",
+            "port": 7878,
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            },
+            "settings": {
+                "method": "aes-256-cfb",
+                "password": "Nzg3OAo=",
+                "udp": true,
+                "level": 1
+            }
+        },
         {
             "tag": "socksProxy",
             "port": 10808,

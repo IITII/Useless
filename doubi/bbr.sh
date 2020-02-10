@@ -151,8 +151,8 @@ installbbr(){
 			echo -e "${Error} BBR 不支持 OpenVZ 虚拟化(不支持更换内核) !" && exit 1
 		fi
 	fi
-	echo "nameserver 8.8.8.8" > /etc/resolv.conf
-	echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+	#echo "nameserver 8.8.8.8" > /etc/resolv.conf
+	#echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 	
 	wget -O "${deb_kernel_name}" "${deb_kernel_url}"
 	if [[ -s ${deb_kernel_name} ]]; then

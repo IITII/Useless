@@ -1,0 +1,15 @@
+[Unit]
+Description=A user define startUp service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Restart=no
+RestartSec=5s
+ExecStart=/bin/bash /root/startUp.sh
+# ExecReload=   Add command to here 
+# ExecStop=     what they can do
+# ExecStopPost=
+[Install]
+WantedBy=multi-user.target

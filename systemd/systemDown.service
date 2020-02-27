@@ -1,0 +1,15 @@
+[Unit]
+Description=Run something before shutdown
+# 假设要执行的命令依赖网络
+Requires=network.target
+DefaultDependencies=no
+Before=shutdown.target reboot.target halt.target poweroff.target
+
+[Service]
+Type=oneshot
+#RemainAfterExit=true
+ExecStart=/bin/bash /root/systemDown.sh
+#ExecStop=/bin/bash /usr/local/bin/cleanup.sh
+
+[Install]
+WantedBy=multi-user.target

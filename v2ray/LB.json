@@ -1,5 +1,10 @@
 {
-    "policy": null,
+    "policy": {
+        "system": {
+            "statsInboundUplink": true,
+            "statsInboundDownlink": true
+        }
+    },
     "log": {
         "access": "",
         "error": "",
@@ -7,10 +12,29 @@
     },
     "inbounds": [
         {
-            "tag": "proxy",
+            "tag": "ssPorxy",
+            "listen": "0.0.0.0",
+            "protocol": "shadowsocks",
+            "port": 7878,
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            },
+            "settings": {
+                "method": "aes-256-cfb",
+                "password": "Nzg3OAo=",
+                "udp": true,
+                "level": 1
+            }
+        },
+        {
+            "tag": "socksProxy",
             "port": 10808,
-            "listen": "127.0.0.1",
-            "protocol": "socks",
+            "listen": "0.0.0.0",
+            "protocol": "http",
             "sniffing": {
                 "enabled": true,
                 "destOverride": [
@@ -21,6 +45,27 @@
             "settings": {
                 "auth": "noauth",
                 "udp": true,
+                "ip": null,
+                "address": null,
+                "clients": null
+            },
+            "streamSettings": null
+        },
+        {
+            "tag": "httpProxy",
+            "port": 10809,
+            "listen": "0.0.0.0",
+            "protocol": "http",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            },
+            "settings": {
+                "auth": "noauth",
+                "udp": false,
                 "ip": null,
                 "address": null,
                 "clients": null
@@ -68,7 +113,51 @@
                 "quicSettings": null
             },
             "mux": {
-                "enabled": true
+                "enabled": true,
+                "concurrency": 8
+            }
+        },
+        {
+            "tag": "proxy-1",
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "mail.*****.me",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "7e6d3467-110e-4814-82ab-587bbb217504",
+                                "alterId": 64,
+                                "email": "t@t.tt",
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ],
+                "servers": null,
+                "response": null
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "allowInsecure": true,
+                    "serverName": null
+                },
+                "tcpSettings": null,
+                "kcpSettings": null,
+                "wsSettings": {
+                    "connectionReuse": true,
+                    "path": "/china",
+                    "headers": null
+                },
+                "httpSettings": null,
+                "quicSettings": null
+            },
+            "mux": {
+                "enabled": true,
+                "concurrency": 8
             }
         },
         {
@@ -96,39 +185,18 @@
             "mux": null
         }
     ],
-    "stats": null,
-    "api": null,
-    "dns": null,
     "routing": {
         "domainStrategy": "IPIfNonMatch",
-        "rules": [
+        "balancers": [
             {
-                "type": "field",
-                "port": null,
-                "inboundTag": null,
-                "outboundTag": "proxy",
-                "ip": null,
-                "domain": [
-                    "geosite:google",
-                    "geosite:github",
-                    "geosite:netflix",
-                    "geosite:steam",
-                    "geosite:telegram",
-                    "geosite:tumblr",
-                    "geosite:speedtest",
-                    "geosite:bbc",
-                    "geosite:geolocation-!cn",
-                    "geosite:category-vpnservices",
-                    "geosite:wikimedia",
-                    "geosite:wikileaks",
-                    "domain:gvt1.com",
-                    "domain:textnow.com",
-                    "domain:twitch.tv",
-                    "domain:naver.com",
-                    "domain:docs.videojs.com",
-                    "domain:videojs.com"
+                "tag": "LB",
+                "selector": [
+                    "proxy",
+                    "proxy-1"
                 ]
-            },
+            }
+        ],
+        "rules": [
             {
                 "type": "field",
                 "port": null,
@@ -175,6 +243,12 @@
                     "geosite:category-ads-all",
                     "geosite:category-porn"
                 ]
+            },
+            // A same as a default rule
+            {
+                "type": "field",
+                "network": "tcp,udp",
+                "balancerTag": "LB"
             }
         ]
     }

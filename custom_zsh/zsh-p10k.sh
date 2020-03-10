@@ -80,7 +80,7 @@ main() {
     check_command ${release} sed sed
     check_command ${release} curl curl
     check_command ${release} whoami coreutils
-    if [ -d "~/.oh-my-zsh" ]; then
+    if [ -d ~/.oh-my-zsh ]; then
         log_success "Oh-my-zsh is already installed"
     else
         log_info "Installing oh-my-zsh..."

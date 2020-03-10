@@ -123,5 +123,7 @@ alias py='export http_proxy=$LOCALHOST:$PORT && export https_proxy=$LOCALHOST:$P
 alias cpy='echo -e "http_proxy=$http_proxy \nhttps_proxy=$https_proxy"'
 alias cgl='py && curl google.com && upy'
 
+export PATH=$PATH:/snap/bin
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -110,8 +110,11 @@ main() {
     sed -i "s|^export ZSH=\"/root/.oh-my-zsh\"$|export ZSH=\"${ZSH_HOME}\"|g" ${HOME}/.zshrc
     #sed -i "s/^export ZSH=\"\/root\/.oh-my-zsh\"$/export ZSH=\"\/$(whoami)\/.oh-my-zsh\"/g" ~/.zshrc
     pre_command_run_status
-    log_info "Reloading zsh..."
-    source ~/.zshrc
-    pre_command_run_status
+    #log_info "Reloading zsh..."
+    #source ~/.zshrc
+    #pre_command_run_status
+    log_prompt "Almost done..."
+    log_prompt "Please COPY & PASTE following...\n\nsource ~/.zshrc"
+    #log_success "source ~/.zshrc"
 }
 main

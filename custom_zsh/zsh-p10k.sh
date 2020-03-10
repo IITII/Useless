@@ -114,7 +114,7 @@ main() {
     #source ~/.zshrc
     #pre_command_run_status
     log_prompt "Almost done..."
-    log_prompt "Please COPY & PASTE following...\n\nsource ~/.zshrc"
+    log_prompt "Please COPY & PASTE following...\n\nsource ~/.zshrc\n\n"
     #log_success "source ~/.zshrc"
 }
 main

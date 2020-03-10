@@ -74,29 +74,44 @@ check_command() {
     fi
 }
 main() {
+    HOME=$(cd ~/ && pwd)
+    ZSH_HOME=${HOME}/.oh-my-zsh
+    ZSH_CUSTOM=${ZSH_HOME}/custom
     check_release
     check_command ${release} zsh zsh
     check_command ${release} wget wget
     check_command ${release} sed sed
     check_command ${release} curl curl
     check_command ${release} whoami coreutils
-    if [ -d ~/.oh-my-zsh ]; then
+    if [ -d ${ZSH_HOME} ]; then
         log_success "Oh-my-zsh is already installed"
     else
         log_info "Installing oh-my-zsh..."
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
         pre_command_run_status
     fi
-    log_info "Downloading .zshrc"
+    log_info "Downloading theme"
+    if [ -d ${ZSH_CUSTOM}/themes/powerlevel10k ]; then
+        log_success "Theme powerlevel10k is already installed"
+    else
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k
+        pre_command_run_status
+    fi
+    log_info "Downloading oh-my-zsh config"
     wget -N -q --no-check-certificate -O ~/.zshrc \
         https://raw.githubusercontent.com/IITII/Useless/master/custom_zsh/zshrc
     pre_command_run_status
-    log_info "Downloading .p10k.zsh"
+    log_info "Downloading theme config"
     log_prompt "For more: see -> https://github.com/romkatv/powerlevel10k"
     wget -N -q --no-check-certificate -O ~/.p10k.zsh \
         https://raw.githubusercontent.com/IITII/Useless/master/custom_zsh/p10k.zsh
     pre_command_run_status
-    sed -i "s/^export ZSH=\"\/root\/.oh-my-zsh\"$/export ZSH=\"\/$(whoami)\/.oh-my-zsh\"/g" ~/.zshrc
+    log_info "Modify config..."
+    sed -i "s|^export ZSH=\"/root/.oh-my-zsh\"$|export ZSH=\"${ZSH_HOME}\"|g" ${HOME}/.zshrc
+    #sed -i "s/^export ZSH=\"\/root\/.oh-my-zsh\"$/export ZSH=\"\/$(whoami)\/.oh-my-zsh\"/g" ~/.zshrc
+    pre_command_run_status
+    log_info "Reloading zsh..."
     source ~/.zshrc
+    pre_command_run_status
 }
 main

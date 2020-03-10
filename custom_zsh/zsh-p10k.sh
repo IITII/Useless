@@ -80,9 +80,13 @@ main() {
     check_command ${release} sed sed
     check_command ${release} curl curl
     check_command ${release} whoami coreutils
-    log_info "Installing oh-my-zsh..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    pre_command_run_status
+    if [ -d "~/.oh-my-zsh" ]; then
+        log_success "Oh-my-zsh is already installed"
+    else
+        log_info "Installing oh-my-zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        pre_command_run_status
+    fi
     log_info "Downloading .zshrc"
     wget -N -q --no-check-certificate -O ~/.zshrc \
         https://raw.githubusercontent.com/IITII/Useless/master/custom_zsh/zshrc

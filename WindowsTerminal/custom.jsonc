@@ -35,7 +35,8 @@
             "backgroundImageOpacity": 0.25,
             "backgroundImageStretchMode": "uniformToFill",
             "historySize": 9001,
-            "fontFace": "'JetBrains Mono', 'MesloLGS NF','Cascadia Mono','Fira Code', 'Source Code Pro', 'Source Code Variable','冬青黑体简体中文 W3', Consolas, 'Courier New', monospace"
+            "fontFace": "MesloLGS NF"
+            //"fontFace": "'JetBrains Mono', 'MesloLGS NF','Cascadia Mono'"
         },
         "list": [
             {

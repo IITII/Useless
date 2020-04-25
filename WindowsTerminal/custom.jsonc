@@ -112,32 +112,44 @@
             "keys": "alt+shift+d"
         },
         {
+            //关闭当前页面
             "command": "closeTab",
             "keys": "ctrl+w"
         },
         {
+            //恢复字体大小为默认
             "command": "resetFontSize",
             "keys": "ctrl+0"
         },
         {
+            //取消所有按键绑定
             "command": "unbound",
             "keys": "ctrl+home"
         },
         {
+            //下翻
             "command": "scrollDown",
             "keys": "pgdn"
         },
         {
+            //上翻
             "command": "scrollUp",
             "keys": "pgup"
         },
         {
+            //下翻页
             "command": "scrollDownPage",
             "keys": "shift+pgdn"
         },
         {
+            //上翻页
             "command": "scrollUpPage",
             "keys": "shift+pgup"
+        },
+        {
+            //全屏
+            "command": "toggleFullscreen",
+            "keys": "shift+enter"
         }
     ]
 }

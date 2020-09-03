@@ -6,47 +6,46 @@
 ----
 * [***Shell脚本***](#shell脚本)
 
-  * [quick-set.sh](#quick-setsh)
+  <!-- * [quick-set.sh](#quick-setsh) -->
   
-  * [AutoFormat.sh](#AutoFormatsh)
+  <!-- * [AutoFormat.sh](#AutoFormatsh) -->
   
   * [clean.sh](#cleansh)
 
   * [update-ssr.sh](#update-ssrsh)
   
-  * [Format.sh](#Formatsh)
+  <!-- * [Format.sh](#Formatsh) -->
 
   * [FFmpeg.sh](#FFmpegsh)
-  * [psi4_Simple.sh](#psi4Simplesh)
-  * [Ssh-Login-Notify](#sshloginnotifysh)
+  * [ssh-login-notify](#sshloginnotifysh)
   * [info.sh](#infosh)
   * [sysInfo_notify.sh](#sysinfonotifysh)
   * [diamond.sh](#diamondsh)
-  * [autossh.sh](#autosshsh)
+  <!-- * [autossh.sh](#autosshsh) -->
   
 * [***配置文件***](#配置文件)
 
-  * [V2ray配置文件](#V2ray-configconf)
+  <!-- * [V2ray配置文件](#V2ray-configconf) -->
   
   * [Aria2配置文件](#aria2conf)
 * [others](./doubi/README.md)
 ----
 ## shell脚本
 ----
-### quick-set.sh
+<!-- ### quick-set.sh
 > 为了我在删库后快速重建环境, 默认注释掉了一些配置文件，可根据需要启用
 * 食用方法：
   ```bash
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/quick-set.sh && chmod +x quick-set.sh && bash quick-set.sh
-  ```
+  ``` -->
 
-### AutoFormat.sh
+<!-- ### AutoFormat.sh
 > Aria2自动转码脚本（开发ing）
 > 重定向至[Format.sh](#Formatsh)
 * 食用方法：
   ```bash
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/AutoFormat.sh && chmod +x AutoFormat.sh && bash AutoFormat.sh
-  ```
+  ``` -->
 
 ### clean.sh
 > 简单释放一下系统空间
@@ -55,12 +54,14 @@
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/clean.sh && chmod +x clean.sh && bash clean.sh
   ```
 
-### update-ssr.sh
-> 自动检测并更新electron-ssr版本
-* 食用方法：
+### ~~update-ssr.sh~~
+> ~~自动检测并更新electron-ssr版本  ~~
+* ~~食用方法：~~
   ```bash
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/update-ssr.sh && chmod +x update-ssr.sh && bash update-ssr.sh
   ```
+
+<!--
 
 ### Format.sh
 > Aria2下载的视频文件自动转码脚本，默认转成**MP4**格式（v1.0.0）  
@@ -74,6 +75,8 @@
     echo "on-download-complete=bash ~/Format.sh" >> ~/.aria2/aria2.conf
     echo "#force-save=true" >> ~/.aria2/aria2.conf
   ```
+-->
+
 ### FFmpeg.sh
 > 一个基于FFmpeg可以进行媒体文件转码的简易工具  
 > 支持命令行选项  
@@ -121,12 +124,17 @@
   8.srt字幕转ass
   9.添加ass字幕
   ```
+
+<!--
+
 ### psi4_Simple.sh
 > 一个简单安装 `psi4` 的脚本
 
 ```
 wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/psi4_Simple.sh && chmod +x psi4_Simple.sh
 ```
+-->
+
 
 ### ssh_login_notify.sh
 > 基于 **slack api** 的一个 **ssh** 登录通知服务  
@@ -244,19 +252,19 @@ root@server1804:~/dev# ./diamond.sh
 root@server1804:~/dev#
 ```
 
-### autossh.sh
+<!-- ### autossh.sh
 > A simple shell script to update ssh config
 
 * 使用：  
 
   ```bash 
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/autossh.sh && chmod +x autossh.sh
-  ```
+  ``` -->
 
 ----
 ## 配置文件
 ----
-### V2ray-config.conf
+<!-- ### V2ray-config.conf
 > V2ray简单配置文件，内置ss + mtproxy
 * 食用方法：
   ```bash
@@ -265,16 +273,12 @@ root@server1804:~/dev#
   wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/v2ray-config.json
   mv ./v2ray-config.json /etc/v2ray/config.json
   systemctl restart v2ray && systemctl status v2ray
-  ```
+  ``` -->
 
 ### Aria2.conf
 > Aria2 简单配置文件。~~搭配[Format.sh](#Formatsh)更香哦~~
 * 食用方法:
     ```bash
-    ##安装Aria2推荐 ToyoDAdoubiBackup 大佬的一键脚本
-    ##==================================
-    wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
-    ##==================================
     ##备份原来的配置文件并替换配置文件
     wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/aria2.conf && chmod 666 aria2.conf && mv ~/.aria2/aria2.conf ~/.aria2/aria2.conf_back && mv aria2.conf ~/.aria2/aria2.conf
     ```

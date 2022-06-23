@@ -4,6 +4,17 @@
 ----
 **Contents**
 ----
+* [逗比脚本](./doubi/README.md)
+  
+* [***自用配置文件***](#配置文件)
+  * [Aria2配置文件](#aria2conf)
+  * [V2ray配置文件](./v2ray/README.md)
+  * [WindowsTerminal](./WindowsTerminal/)
+  * [Systemd 启动脚本](./systemd/README.md)
+  * [将 idea database tool 迁移到 webstorm](./jetbrains/DatabaseTool.sh)
+  * [frp 配置文件](./frp/)
+  * [oh-my-zsh + power10k一键主题](./custom_zsh/README.md)
+  * [其他配置文件](./conf/README.md)
 * [***Shell脚本***](#shell脚本)
 
   <!-- * [quick-set.sh](#quick-setsh) -->
@@ -11,24 +22,15 @@
   <!-- * [AutoFormat.sh](#AutoFormatsh) -->
   
   * [clean.sh](#cleansh)
-
   * [update-ssr.sh](#update-ssrsh)
-  
   <!-- * [Format.sh](#Formatsh) -->
-
   * [FFmpeg.sh](#FFmpegsh)
   * [ssh-login-notify](#sshloginnotifysh)
   * [info.sh](#infosh)
   * [sysInfo_notify.sh](#sysinfonotifysh)
   * [diamond.sh](#diamondsh)
   <!-- * [autossh.sh](#autosshsh) -->
-  
-* [***配置文件***](#配置文件)
 
-  <!-- * [V2ray配置文件](#V2ray-configconf) -->
-  
-  * [Aria2配置文件](#aria2conf)
-* [others](./doubi/README.md)
 ----
 ## shell脚本
 ----
